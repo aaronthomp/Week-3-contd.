@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TestDesignTab" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/my_primary</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/my_secondary</item>
+
+        <!-- StatusBar brand color -->
+        <item name="android:statusBarColor">@color/my_statusbar</item>
+
+        <!-- text color -->
+        <item name="android:textColor">@color/my_text</item>
+    </style>
+
+
+    <style name="Theme.TestDesignTab" parent="Base.Theme.TestDesignTab" />
+</resources>
