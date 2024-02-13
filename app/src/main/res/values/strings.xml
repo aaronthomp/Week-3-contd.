@@ -2,4 +2,12 @@
     <string name="app_name">TestDesignTab</string>
     <string name="hello_message">Hello World!</string>
     <string name="button_message">I\'m a button</string>
+    <string name="email_text">Enter your email address:</string>
+    <string name="edit_hint_email">Type email here</string>
+    <string name="text_pwd">Type your password:</string>
+    <string name="login_button">LOGIN</string>
+    <string name="button_call">CALL NUMBER</string>
+    <string name="phone">Enter Phone Number</string>
+    <string name="camera_button">Change picture</string>
+    <string name="welcomeback" />
 </resources>
