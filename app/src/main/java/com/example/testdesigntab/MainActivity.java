@@ -2,7 +2,9 @@ package com.example.testdesigntab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,6 +13,12 @@ import com.example.testdesigntab.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
     private ActivityMainBinding variableBinding;
+
+
+
+
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -46,15 +54,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(variableBinding.getRoot());
-        Intent nextPage = new Intent( MainActivity.this, SecondActivity.class);
+        Intent nextPage = new Intent(MainActivity.this, SecondActivity.class);
 
-        Log.w( TAG, "the first function that gets created when an application is launched.");
+        Log.w(TAG, "the first function that gets created when an application is launched.");
 
+        SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String emailAddress = prefs.getString("LoginName", "");
+        variableBinding.emailEditText.setText(emailAddress);
 
-        variableBinding.loginButton.setOnClickListener( clk-> {
-            nextPage.putExtra( "EmailAddress", variableBinding.emailEditText.getText().toString() );
+        variableBinding.loginButton.setOnClickListener(clk -> {
+            String newEmailAddress = variableBinding.emailEditText.getText().toString();
+            nextPage.putExtra("EmailAddress", newEmailAddress);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("LoginName", newEmailAddress); // Update with the new email address
+            editor.apply();
             startActivity(nextPage);
-        } );
-
+        });
     }
 }
