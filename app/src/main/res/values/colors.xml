@@ -4,6 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="my_primary">#FF2B2B</color>
     <color name="my_secondary">#4A4A4A</color>
-    <color name="my_statusbar">#FF9800</color>
-    <color name="my_text">#03A9F4</color>
+    <color name="my_statusbar">#FF0000</color>
+    <color name="my_text">#FFFFFF</color>
 </resources>
