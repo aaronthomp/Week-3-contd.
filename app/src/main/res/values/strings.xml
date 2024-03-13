@@ -2,4 +2,10 @@
     <string name="app_name">TestDesignTab</string>
     <string name="hello_message">Hello World!</string>
     <string name="button_message">I\'m a button</string>
+    <string name="messageText">Message goes here</string>
+    <string name="timeText">Time goes here</string>
+    <string name="sendButton">Send</string>
+    <string name="receive_button">Receive</string>
+    <string name="enterMessage">Enter message here</string>
+
 </resources>
