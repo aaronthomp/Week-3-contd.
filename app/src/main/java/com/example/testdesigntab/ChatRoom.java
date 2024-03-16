@@ -1,6 +1,9 @@
 package com.example.testdesigntab;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,17 +27,57 @@ import com.example.testdesigntab.databinding.ReceiveMessageBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ChatRoom extends AppCompatActivity {
+
     private ActivityChatRoomBinding binding;
     ArrayList<ChatMessage> messages;
     ChatRoomViewModel chatModel;
     ChatMessageDAO cmDAO;
     public RecyclerView.Adapter myAdapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.item_1) {// Do something when item_1 is selected
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Do you want to delete all messages?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Delete all messages
+                            int size = messages.size();
+                            messages.clear();
+                            myAdapter.notifyItemRangeRemoved(0, size);
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+            return true;
+
+            // Add cases for other menu items if needed
+        }
+        if (item.getItemId() == R.id.item_2) {
+            // Show about dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Version 1.0, created by Aaron Thompson")
+                    .setPositiveButton("OK", null)
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setSupportActionBar(binding.myToolbar);
         MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
         cmDAO = db.cmDAO();
 

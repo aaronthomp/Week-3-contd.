@@ -8,5 +8,7 @@
     <string name="sendButton">Envoyer</string>
     <string name="receive_button">Recevoir</string>
     <string name="enterMessage">Entrez le message ici</string>
+    <string name="delete_this_item">Delete this item</string>
+    <string name="about">About</string>
 
 </resources>
